@@ -1,0 +1,22 @@
+# heartbleed scab
+nmap -d --script ssl-heartbleed --script-args vulns.showall -sV <ip>
+
+# hiden ip scan
+nmap -v -Pn -p <ip>
+
+# port and OS scan
+nmap -sSV -T4 -O -p0-65535 <ip>
+
+# bypass ssh port filtered
+nmap -sF -T4 -O -p 22 <ip>
+
+# brutefoce ssh 22
+nmap -p 22 --script ssh-brute --script-args userdb=users.lst,passdb=pass.lst \ --script-args ssh-brute.timeout=4s <ip> 
+nmap -p 22 --script ssh-brute --script-args userdb=users.lst,passdb=pass.lst <target
+nmap --script firewall-bypass --script-args firewall-bypass.helper="ftp", firewall-bypass.targetport=22 <ip>
+
+# dns brute
+nmap -p<port> -script dns-brute <ip>
+
+# openssl scanning 
+openssl s_client -connect <ip>:<prt> -servername <ip>

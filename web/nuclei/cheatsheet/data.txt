@@ -1,0 +1,5 @@
+# url scan
+proxychains nuclei -u <url>  -c 50 -fa high -v -debug -o <file save>
+
+# file scan 
+proxychains nuclei -l <url>  -c 50 -fa high -v -debug -o <file save>
